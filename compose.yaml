@@ -1,0 +1,29 @@
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: aws.connect.psdb.cloud
+      WORDPRESS_DB_USER: rs95hdis8pm6lzaqt6yb
+      WORDPRESS_DB_PASSWORD: pscale_pw_4Q9eqP5RAu1TJjhDmYQRpKcYjs3bc7L2F5STM07SqnQ
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: define( 'MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
+    volumes:
+      - wordpress:/var/www/html
+
+  # db:
+  #   image: mariadb
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: exampledb
+  #     MYSQL_USER: exampleuser
+  #     MYSQL_PASSWORD: examplepass
+  #     MYSQL_RANDOM_ROOT_PASSWORD: "1"
+  #   volumes:
+  #     - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  # db:
